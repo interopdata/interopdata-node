@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "nodenext",
+    "outDir": "./cjs",
+    "module": "commonjs",
+    "target": "es2017",
+    "checkJs": false,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strict": true,
+    "strictFunctionTypes": true
+  },
+  "include": ["./src/**/*"]
+}
