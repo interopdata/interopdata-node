@@ -1,7 +1,7 @@
 {
   "name": "interopdata",
   "version": "0.0.1-alpha",
-  "description": "",
+  "description": "Interopdata API wrapper",
   "main": "cjs/main.js",
   "scripts": {
     "build": "npm run build-openapi && npm run build-types && npm run build-esm && npm run build-cjs",
@@ -13,9 +13,22 @@
     "prepack": "npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "interopdata",
+    "data interoperability",
+    "api"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/interopdata/interopdata-node",
+  "author": "Interopdata <support@interopdata.com> (https://interopdata.com/)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/interopdata/interopdata-node.git"
+  },
+  "bugs": "https://github.com/interopdata/interopdata-node/issues",
+  "engines": {
+    "node": ">=12.*"
+  },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.5.2",
     "openapi": "^1.0.1",
