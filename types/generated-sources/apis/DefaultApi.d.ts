@@ -10,9 +10,15 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CreateCustomerDto, Customer, Dataset } from '../models';
+import type { AccessToken, CreateAccessTokenDto, CreateCustomerDto, CreateDataExportLinkDto, Customer, DataExportLink, Dataset } from '../models';
 export interface CreateCustomerRequest {
     createCustomerDto: CreateCustomerDto;
+}
+export interface CreateDataExportLinkRequest {
+    createDataExportLinkDto: CreateDataExportLinkDto;
+}
+export interface CreateOAuthTokenRequest {
+    createAccessTokenDto: CreateAccessTokenDto;
 }
 export interface CustomersListRequest {
     createCustomerDto: CreateCustomerDto;
@@ -27,6 +33,18 @@ export declare class DefaultApi extends runtime.BaseAPI {
     /**
      */
     createCustomer(requestParameters: CreateCustomerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Customer>;
+    /**
+     */
+    createDataExportLinkRaw(requestParameters: CreateDataExportLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataExportLink>>;
+    /**
+     */
+    createDataExportLink(requestParameters: CreateDataExportLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataExportLink>;
+    /**
+     */
+    createOAuthTokenRaw(requestParameters: CreateOAuthTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AccessToken>>;
+    /**
+     */
+    createOAuthToken(requestParameters: CreateOAuthTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AccessToken>;
     /**
      */
     customersListRaw(requestParameters: CustomersListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Customer>>>;

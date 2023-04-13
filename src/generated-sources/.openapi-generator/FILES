@@ -1,8 +1,13 @@
 apis/DefaultApi.ts
 apis/index.ts
 index.ts
+models/AccessToken.ts
+models/CreateAccessTokenDto.ts
 models/CreateCustomerDto.ts
+models/CreateDataExportLinkDto.ts
+models/CreateDataExportLinkDtoCustomer.ts
 models/Customer.ts
+models/DataExportLink.ts
 models/Dataset.ts
 models/index.ts
 runtime.ts

@@ -15,21 +15,41 @@
 
 import * as runtime from '../runtime';
 import type {
+  AccessToken,
+  CreateAccessTokenDto,
   CreateCustomerDto,
+  CreateDataExportLinkDto,
   Customer,
+  DataExportLink,
   Dataset,
 } from '../models';
 import {
+    AccessTokenFromJSON,
+    AccessTokenToJSON,
+    CreateAccessTokenDtoFromJSON,
+    CreateAccessTokenDtoToJSON,
     CreateCustomerDtoFromJSON,
     CreateCustomerDtoToJSON,
+    CreateDataExportLinkDtoFromJSON,
+    CreateDataExportLinkDtoToJSON,
     CustomerFromJSON,
     CustomerToJSON,
+    DataExportLinkFromJSON,
+    DataExportLinkToJSON,
     DatasetFromJSON,
     DatasetToJSON,
 } from '../models';
 
 export interface CreateCustomerRequest {
     createCustomerDto: CreateCustomerDto;
+}
+
+export interface CreateDataExportLinkRequest {
+    createDataExportLinkDto: CreateDataExportLinkDto;
+}
+
+export interface CreateOAuthTokenRequest {
+    createAccessTokenDto: CreateAccessTokenDto;
 }
 
 export interface CustomersListRequest {
@@ -77,6 +97,84 @@ export class DefaultApi extends runtime.BaseAPI {
      */
     async createCustomer(requestParameters: CreateCustomerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Customer> {
         const response = await this.createCustomerRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async createDataExportLinkRaw(requestParameters: CreateDataExportLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataExportLink>> {
+        if (requestParameters.createDataExportLinkDto === null || requestParameters.createDataExportLinkDto === undefined) {
+            throw new runtime.RequiredError('createDataExportLinkDto','Required parameter requestParameters.createDataExportLinkDto was null or undefined when calling createDataExportLink.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("project-secret", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/data-export-links`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateDataExportLinkDtoToJSON(requestParameters.createDataExportLinkDto),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DataExportLinkFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async createDataExportLink(requestParameters: CreateDataExportLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataExportLink> {
+        const response = await this.createDataExportLinkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async createOAuthTokenRaw(requestParameters: CreateOAuthTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AccessToken>> {
+        if (requestParameters.createAccessTokenDto === null || requestParameters.createAccessTokenDto === undefined) {
+            throw new runtime.RequiredError('createAccessTokenDto','Required parameter requestParameters.createAccessTokenDto was null or undefined when calling createOAuthToken.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("project-secret", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/oauth/token`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateAccessTokenDtoToJSON(requestParameters.createAccessTokenDto),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AccessTokenFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async createOAuthToken(requestParameters: CreateOAuthTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AccessToken> {
+        const response = await this.createOAuthTokenRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
