@@ -1,6 +1,6 @@
 {
   "name": "interopdata",
-  "version": "0.0.1-alpha",
+  "version": "0.0.2-alpha",
   "description": "Interopdata API wrapper",
   "main": "cjs/main.js",
   "scripts": {
