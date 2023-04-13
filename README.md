@@ -1,6 +1,7 @@
 # Interopdata Node.js Library
 
 [![Version](https://img.shields.io/npm/v/interopdata.svg)](https://www.npmjs.org/package/interopdata)
+[![Build Status](https://github.com/interopdata/interopdata-node/actions/workflows/main.yaml/badge.svg?branch=main)](https://github.com/interopdata/interopdata-node/actions?query=branch%3Amain)
 [![Downloads](https://img.shields.io/npm/dm/interopdata.svg)](https://www.npmjs.com/package/interopdata)
 [![Try on RunKit](https://badge.runkitcdn.com/interopdata.svg)](https://runkit.com/npm/interopdata)
 
