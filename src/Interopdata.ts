@@ -1,27 +1,37 @@
-import { Configuration, DefaultApi } from './generated-sources';
+import {
+  Configuration,
+  ConfigurationParameters,
+  CreateCustomerDto,
+  DefaultApi,
+} from "./generated-sources";
 
-class Interopdata {
-  private api: DefaultApi;
-
-  public constructor(projectSecret: string) {
-    const configuration = new Configuration({
-      basePath: "http://localhost:3000",
-      accessToken(name, scopes) {
-        switch (name) {
-          case "project-secret":
-            return projectSecret;
-        }
-        return "";
-      },
-    });
-
-    this.api = new DefaultApi(configuration);
+class Interopdata extends DefaultApi {
+  public constructor(projectSecret: string, config?: ConfigurationParameters) {
+    super(
+      new Configuration({
+        accessToken(name, scopes) {
+          switch (name) {
+            case "project-secret":
+              return projectSecret;
+          }
+          return "";
+        },
+        ...config,
+      })
+    );
   }
 
-  public async datasets() {
-    const datasets = this.api.datasets();
-    return datasets;
-  }
+  public datasets = {
+    list: () => {
+      return this.datasetsList();
+    },
+  };
+
+  public customers = {
+    create: (createCustomerDto: CreateCustomerDto) => {
+      return this.createCustomer({ createCustomerDto });
+    }
+  };
 }
 
 export default Interopdata;
