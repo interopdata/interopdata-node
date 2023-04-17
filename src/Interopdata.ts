@@ -2,18 +2,20 @@ import {
   Configuration,
   ConfigurationParameters,
   CreateCustomerDto,
+  CreateDataExportDto,
   CreateDataExportLinkDto,
   DefaultApi,
 } from "./generated-sources";
 
 class Interopdata extends DefaultApi {
-  public constructor(projectSecret: string, config?: ConfigurationParameters) {
+  public constructor(bearerToken: string, config?: ConfigurationParameters) {
     super(
       new Configuration({
         accessToken(name, scopes) {
           switch (name) {
+            case "user-token":
             case "project-secret":
-              return projectSecret;
+              return bearerToken;
           }
           return "";
         },
@@ -50,6 +52,12 @@ class Interopdata extends DefaultApi {
       });
     }
   }
+
+  public dataExports = {
+    create: (createDataExportDto: CreateDataExportDto) => {
+      return this.createDataExport({ createDataExportDto });
+    }
+  };
 }
 
 export default Interopdata;

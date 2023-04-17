@@ -1,6 +1,6 @@
-import { ConfigurationParameters, CreateCustomerDto, CreateDataExportLinkDto, DefaultApi } from "./generated-sources";
+import { ConfigurationParameters, CreateCustomerDto, CreateDataExportDto, CreateDataExportLinkDto, DefaultApi } from "./generated-sources";
 declare class Interopdata extends DefaultApi {
-    constructor(projectSecret: string, config?: ConfigurationParameters);
+    constructor(bearerToken: string, config?: ConfigurationParameters);
     datasets: {
         list: () => Promise<import("./generated-sources").Dataset[]>;
     };
@@ -12,6 +12,9 @@ declare class Interopdata extends DefaultApi {
     };
     oauth: {
         token: (code: string) => Promise<import("./generated-sources").AccessToken>;
+    };
+    dataExports: {
+        create: (createDataExportDto: CreateDataExportDto) => Promise<void>;
     };
 }
 export default Interopdata;

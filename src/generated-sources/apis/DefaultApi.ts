@@ -18,6 +18,7 @@ import type {
   AccessToken,
   CreateAccessTokenDto,
   CreateCustomerDto,
+  CreateDataExportDto,
   CreateDataExportLinkDto,
   Customer,
   DataExportLink,
@@ -30,6 +31,8 @@ import {
     CreateAccessTokenDtoToJSON,
     CreateCustomerDtoFromJSON,
     CreateCustomerDtoToJSON,
+    CreateDataExportDtoFromJSON,
+    CreateDataExportDtoToJSON,
     CreateDataExportLinkDtoFromJSON,
     CreateDataExportLinkDtoToJSON,
     CustomerFromJSON,
@@ -42,6 +45,10 @@ import {
 
 export interface CreateCustomerRequest {
     createCustomerDto: CreateCustomerDto;
+}
+
+export interface CreateDataExportRequest {
+    createDataExportDto: CreateDataExportDto;
 }
 
 export interface CreateDataExportLinkRequest {
@@ -98,6 +105,44 @@ export class DefaultApi extends runtime.BaseAPI {
     async createCustomer(requestParameters: CreateCustomerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Customer> {
         const response = await this.createCustomerRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     */
+    async createDataExportRaw(requestParameters: CreateDataExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.createDataExportDto === null || requestParameters.createDataExportDto === undefined) {
+            throw new runtime.RequiredError('createDataExportDto','Required parameter requestParameters.createDataExportDto was null or undefined when calling createDataExport.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("user-token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/data-exports`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreateDataExportDtoToJSON(requestParameters.createDataExportDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async createDataExport(requestParameters: CreateDataExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.createDataExportRaw(requestParameters, initOverrides);
     }
 
     /**

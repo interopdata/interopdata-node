@@ -1,6 +1,7 @@
 export * from './AccessToken';
 export * from './CreateAccessTokenDto';
 export * from './CreateCustomerDto';
+export * from './CreateDataExportDto';
 export * from './CreateDataExportLinkDto';
 export * from './CreateDataExportLinkDtoCustomer';
 export * from './Customer';

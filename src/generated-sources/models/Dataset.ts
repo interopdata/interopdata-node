@@ -43,6 +43,18 @@ export interface Dataset {
      * @memberof Dataset
      */
     description: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Dataset
+     */
+    icon: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Dataset
+     */
+    contentType: string;
 }
 
 /**
@@ -54,6 +66,8 @@ export function instanceOfDataset(value: object): boolean {
     isInstance = isInstance && "slug" in value;
     isInstance = isInstance && "name" in value;
     isInstance = isInstance && "description" in value;
+    isInstance = isInstance && "icon" in value;
+    isInstance = isInstance && "contentType" in value;
 
     return isInstance;
 }
@@ -72,6 +86,8 @@ export function DatasetFromJSONTyped(json: any, ignoreDiscriminator: boolean): D
         'slug': json['slug'],
         'name': json['name'],
         'description': json['description'],
+        'icon': json['icon'],
+        'contentType': json['contentType'],
     };
 }
 
@@ -88,6 +104,8 @@ export function DatasetToJSON(value?: Dataset | null): any {
         'slug': value.slug,
         'name': value.name,
         'description': value.description,
+        'icon': value.icon,
+        'contentType': value.contentType,
     };
 }
 

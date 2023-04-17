@@ -39,6 +39,18 @@ export interface Dataset {
      * @memberof Dataset
      */
     description: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Dataset
+     */
+    icon: string;
+    /**
+     *
+     * @type {string}
+     * @memberof Dataset
+     */
+    contentType: string;
 }
 /**
  * Check if a given object implements the Dataset interface.

@@ -10,9 +10,12 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AccessToken, CreateAccessTokenDto, CreateCustomerDto, CreateDataExportLinkDto, Customer, DataExportLink, Dataset } from '../models';
+import type { AccessToken, CreateAccessTokenDto, CreateCustomerDto, CreateDataExportDto, CreateDataExportLinkDto, Customer, DataExportLink, Dataset } from '../models';
 export interface CreateCustomerRequest {
     createCustomerDto: CreateCustomerDto;
+}
+export interface CreateDataExportRequest {
+    createDataExportDto: CreateDataExportDto;
 }
 export interface CreateDataExportLinkRequest {
     createDataExportLinkDto: CreateDataExportLinkDto;
@@ -33,6 +36,12 @@ export declare class DefaultApi extends runtime.BaseAPI {
     /**
      */
     createCustomer(requestParameters: CreateCustomerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Customer>;
+    /**
+     */
+    createDataExportRaw(requestParameters: CreateDataExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     */
+    createDataExport(requestParameters: CreateDataExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
      */
     createDataExportLinkRaw(requestParameters: CreateDataExportLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataExportLink>>;

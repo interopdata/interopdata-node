@@ -4,6 +4,7 @@ index.ts
 models/AccessToken.ts
 models/CreateAccessTokenDto.ts
 models/CreateCustomerDto.ts
+models/CreateDataExportDto.ts
 models/CreateDataExportLinkDto.ts
 models/CreateDataExportLinkDtoCustomer.ts
 models/Customer.ts
