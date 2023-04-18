@@ -1,4 +1,5 @@
 import { ConfigurationParameters, CreateCustomerDto, CreateDataExportDto, CreateDataExportLinkDto, DefaultApi } from "./generated-sources";
+import Webhooks from "./Webhooks";
 declare class Interopdata extends DefaultApi {
     constructor(bearerToken: string, config?: ConfigurationParameters);
     datasets: {
@@ -16,5 +17,6 @@ declare class Interopdata extends DefaultApi {
     dataExports: {
         create: (createDataExportDto: CreateDataExportDto) => Promise<void>;
     };
+    webhooks: Webhooks;
 }
 export default Interopdata;

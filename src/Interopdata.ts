@@ -6,6 +6,7 @@ import {
   CreateDataExportLinkDto,
   DefaultApi,
 } from "./generated-sources";
+import Webhooks from "./Webhooks";
 
 class Interopdata extends DefaultApi {
   public constructor(bearerToken: string, config?: ConfigurationParameters) {
@@ -58,6 +59,8 @@ class Interopdata extends DefaultApi {
       return this.createDataExport({ createDataExportDto });
     }
   };
+
+  public webhooks = new Webhooks();
 }
 
 export default Interopdata;
