@@ -9,5 +9,6 @@ export * from './CreateDataExportLinkDtoCustomer';
 export * from './Customer';
 export * from './DataExport';
 export * from './DataExportDataset';
+export * from './DataExportDatasetDownload';
 export * from './DataExportLink';
 export * from './Dataset';

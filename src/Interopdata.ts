@@ -70,6 +70,10 @@ class Interopdata extends DefaultApi {
     retrieve: (dataExportDatasetId: string) => {
       return this.dataExportDatasetRetrieve({ id: dataExportDatasetId });
     },
+
+    download: (dataExportDatasetId: string) => {
+      return this.createDataExportDatasetDownload({ id: dataExportDatasetId });
+    },
   };
 
   public webhooks = new Webhooks();

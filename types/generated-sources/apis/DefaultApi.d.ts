@@ -10,12 +10,15 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AccessToken, CreateAccessTokenDto, CreateCustomerDto, CreateDataExportDto, CreateDataExportLinkDto, Customer, DataExport, DataExportDataset, DataExportLink, Dataset } from '../models';
+import type { AccessToken, CreateAccessTokenDto, CreateCustomerDto, CreateDataExportDto, CreateDataExportLinkDto, Customer, DataExport, DataExportDataset, DataExportDatasetDownload, DataExportLink, Dataset } from '../models';
 export interface CreateCustomerRequest {
     createCustomerDto: CreateCustomerDto;
 }
 export interface CreateDataExportRequest {
     createDataExportDto: CreateDataExportDto;
+}
+export interface CreateDataExportDatasetDownloadRequest {
+    id: string;
 }
 export interface CreateDataExportLinkRequest {
     createDataExportLinkDto: CreateDataExportLinkDto;
@@ -48,6 +51,12 @@ export declare class DefaultApi extends runtime.BaseAPI {
     /**
      */
     createDataExport(requestParameters: CreateDataExportRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     */
+    createDataExportDatasetDownloadRaw(requestParameters: CreateDataExportDatasetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataExportDatasetDownload>>;
+    /**
+     */
+    createDataExportDatasetDownload(requestParameters: CreateDataExportDatasetDownloadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataExportDatasetDownload>;
     /**
      */
     createDataExportLinkRaw(requestParameters: CreateDataExportLinkRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataExportLink>>;
