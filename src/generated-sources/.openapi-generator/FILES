@@ -8,6 +8,8 @@ models/CreateDataExportDto.ts
 models/CreateDataExportLinkDto.ts
 models/CreateDataExportLinkDtoCustomer.ts
 models/Customer.ts
+models/DataExport.ts
+models/DataExportDataset.ts
 models/DataExportLink.ts
 models/Dataset.ts
 models/index.ts

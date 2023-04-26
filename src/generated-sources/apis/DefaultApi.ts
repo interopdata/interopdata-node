@@ -21,6 +21,7 @@ import type {
   CreateDataExportDto,
   CreateDataExportLinkDto,
   Customer,
+  DataExport,
   DataExportLink,
   Dataset,
 } from '../models';
@@ -37,6 +38,8 @@ import {
     CreateDataExportLinkDtoToJSON,
     CustomerFromJSON,
     CustomerToJSON,
+    DataExportFromJSON,
+    DataExportToJSON,
     DataExportLinkFromJSON,
     DataExportLinkToJSON,
     DatasetFromJSON,
@@ -259,6 +262,38 @@ export class DefaultApi extends runtime.BaseAPI {
      */
     async customersList(requestParameters: CustomersListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Customer>> {
         const response = await this.customersListRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async dataExportsListRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DataExport>>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("user-token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/data-exports`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(DataExportFromJSON));
+    }
+
+    /**
+     */
+    async dataExportsList(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DataExport>> {
+        const response = await this.dataExportsListRaw(initOverrides);
         return await response.value();
     }
 
