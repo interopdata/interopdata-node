@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AccessToken, CreateAccessTokenDto, CreateCustomerDto, CreateDataExportDto, CreateDataExportLinkDto, Customer, DataExportLink, Dataset } from '../models';
+import type { AccessToken, CreateAccessTokenDto, CreateCustomerDto, CreateDataExportDto, CreateDataExportLinkDto, Customer, DataExport, DataExportDataset, DataExportLink, Dataset } from '../models';
 export interface CreateCustomerRequest {
     createCustomerDto: CreateCustomerDto;
 }
@@ -25,6 +25,12 @@ export interface CreateOAuthTokenRequest {
 }
 export interface CustomersListRequest {
     createCustomerDto: CreateCustomerDto;
+}
+export interface DataExportDatasetRetrieveRequest {
+    id: string;
+}
+export interface DataExportRetrieveRequest {
+    id: string;
 }
 /**
  *
@@ -60,6 +66,24 @@ export declare class DefaultApi extends runtime.BaseAPI {
     /**
      */
     customersList(requestParameters: CustomersListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Customer>>;
+    /**
+     */
+    dataExportDatasetRetrieveRaw(requestParameters: DataExportDatasetRetrieveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataExportDataset>>;
+    /**
+     */
+    dataExportDatasetRetrieve(requestParameters: DataExportDatasetRetrieveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataExportDataset>;
+    /**
+     */
+    dataExportRetrieveRaw(requestParameters: DataExportRetrieveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataExport>>;
+    /**
+     */
+    dataExportRetrieve(requestParameters: DataExportRetrieveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataExport>;
+    /**
+     */
+    dataExportsListRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DataExport>>>;
+    /**
+     */
+    dataExportsList(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DataExport>>;
     /**
      */
     datasetsListRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Dataset>>>;

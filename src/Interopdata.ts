@@ -57,7 +57,19 @@ class Interopdata extends DefaultApi {
   public dataExports = {
     create: (createDataExportDto: CreateDataExportDto) => {
       return this.createDataExport({ createDataExportDto });
-    }
+    },
+    list: () => {
+      return this.dataExportsList();
+    },
+    retrieve: (dataExportId: string) => {
+      return this.dataExportRetrieve({ id: dataExportId });
+    },
+  };
+
+  public dataExportDatasets = {
+    retrieve: (dataExportDatasetId: string) => {
+      return this.dataExportDatasetRetrieve({ id: dataExportDatasetId });
+    },
   };
 
   public webhooks = new Webhooks();

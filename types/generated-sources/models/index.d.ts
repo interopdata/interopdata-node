@@ -5,5 +5,7 @@ export * from './CreateDataExportDto';
 export * from './CreateDataExportLinkDto';
 export * from './CreateDataExportLinkDtoCustomer';
 export * from './Customer';
+export * from './DataExport';
+export * from './DataExportDataset';
 export * from './DataExportLink';
 export * from './Dataset';

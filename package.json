@@ -30,9 +30,9 @@
     "node": ">=12.*"
   },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.5.2",
+    "@openapitools/openapi-generator-cli": "^2.6.0",
     "openapi": "^1.0.1",
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.4"
   },
   "types": "types/main.d.ts"
 }

@@ -22,6 +22,7 @@ import type {
   CreateDataExportLinkDto,
   Customer,
   DataExport,
+  DataExportDataset,
   DataExportLink,
   Dataset,
 } from '../models';
@@ -40,6 +41,8 @@ import {
     CustomerToJSON,
     DataExportFromJSON,
     DataExportToJSON,
+    DataExportDatasetFromJSON,
+    DataExportDatasetToJSON,
     DataExportLinkFromJSON,
     DataExportLinkToJSON,
     DatasetFromJSON,
@@ -64,6 +67,14 @@ export interface CreateOAuthTokenRequest {
 
 export interface CustomersListRequest {
     createCustomerDto: CreateCustomerDto;
+}
+
+export interface DataExportDatasetRetrieveRequest {
+    id: string;
+}
+
+export interface DataExportRetrieveRequest {
+    id: string;
 }
 
 /**
@@ -262,6 +273,78 @@ export class DefaultApi extends runtime.BaseAPI {
      */
     async customersList(requestParameters: CustomersListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Customer>> {
         const response = await this.customersListRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async dataExportDatasetRetrieveRaw(requestParameters: DataExportDatasetRetrieveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataExportDataset>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling dataExportDatasetRetrieve.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("user-token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/data-export-datasets/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DataExportDatasetFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async dataExportDatasetRetrieve(requestParameters: DataExportDatasetRetrieveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataExportDataset> {
+        const response = await this.dataExportDatasetRetrieveRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async dataExportRetrieveRaw(requestParameters: DataExportRetrieveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DataExport>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling dataExportRetrieve.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("user-token", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/data-exports/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DataExportFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async dataExportRetrieve(requestParameters: DataExportRetrieveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DataExport> {
+        const response = await this.dataExportRetrieveRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

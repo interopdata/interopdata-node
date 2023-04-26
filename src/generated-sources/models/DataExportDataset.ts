@@ -49,6 +49,12 @@ export interface DataExportDataset {
      * @memberof DataExportDataset
      */
     status: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DataExportDataset
+     */
+    size?: string;
 }
 
 /**
@@ -80,6 +86,7 @@ export function DataExportDatasetFromJSONTyped(json: any, ignoreDiscriminator: b
         'description': json['description'],
         'icon': json['icon'],
         'status': json['status'],
+        'size': !exists(json, 'size') ? undefined : json['size'],
     };
 }
 
@@ -97,6 +104,7 @@ export function DataExportDatasetToJSON(value?: DataExportDataset | null): any {
         'description': value.description,
         'icon': value.icon,
         'status': value.status,
+        'size': value.size,
     };
 }
 
