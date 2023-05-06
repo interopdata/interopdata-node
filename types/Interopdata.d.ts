@@ -12,7 +12,7 @@ declare class Interopdata extends DefaultApi {
         create: (createDataExportLinkDto: CreateDataExportLinkDto) => Promise<import("./generated-sources").DataExportLink>;
     };
     oauth: {
-        token: (code: string) => Promise<import("./generated-sources").AccessToken>;
+        token: (code: string, ip?: string) => Promise<import("./generated-sources").AccessToken>;
     };
     dataExports: {
         create: (createDataExportDto: CreateDataExportDto) => Promise<void>;

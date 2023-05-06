@@ -27,6 +27,12 @@ export interface CreateAccessTokenDto {
      * @memberof CreateAccessTokenDto
      */
     code: string;
+    /**
+     * The source IP address of the exchange request.
+     * @type {string}
+     * @memberof CreateAccessTokenDto
+     */
+    ip?: string;
 }
 /**
  * Check if a given object implements the CreateAccessTokenDto interface.

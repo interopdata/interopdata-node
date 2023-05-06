@@ -44,11 +44,12 @@ class Interopdata extends DefaultApi {
   };
 
   public oauth = {
-    token: (code: string) => {
+    token: (code: string, ip?: string) => {
       return this.createOAuthToken({
         createAccessTokenDto: {
           grantType: "authorization_code",
           code,
+          ip,
         }
       });
     }

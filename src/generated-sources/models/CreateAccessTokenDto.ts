@@ -31,6 +31,12 @@ export interface CreateAccessTokenDto {
      * @memberof CreateAccessTokenDto
      */
     code: string;
+    /**
+     * The source IP address of the exchange request.
+     * @type {string}
+     * @memberof CreateAccessTokenDto
+     */
+    ip?: string;
 }
 
 /**
@@ -56,6 +62,7 @@ export function CreateAccessTokenDtoFromJSONTyped(json: any, ignoreDiscriminator
         
         'grantType': json['grant_type'],
         'code': json['code'],
+        'ip': !exists(json, 'ip') ? undefined : json['ip'],
     };
 }
 
@@ -70,6 +77,7 @@ export function CreateAccessTokenDtoToJSON(value?: CreateAccessTokenDto | null):
         
         'grant_type': value.grantType,
         'code': value.code,
+        'ip': value.ip,
     };
 }
 

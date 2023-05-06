@@ -10,7 +10,7 @@
 Install the package with:
 
 ```sh
-npm install interopdata --save
+npm install interopdata
 # or
 yarn add interopdata
 ```
