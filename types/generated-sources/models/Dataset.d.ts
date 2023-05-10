@@ -29,22 +29,22 @@ export interface Dataset {
     slug: string;
     /**
      *
-     * @type {string}
+     * @type {object}
      * @memberof Dataset
      */
-    name: string;
+    name: object;
     /**
      *
-     * @type {string}
+     * @type {object}
      * @memberof Dataset
      */
-    description: string;
+    description: object;
     /**
      *
-     * @type {string}
+     * @type {object}
      * @memberof Dataset
      */
-    icon: string;
+    icon: object;
     /**
      *
      * @type {string}
