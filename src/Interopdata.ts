@@ -37,6 +37,12 @@ class Interopdata extends DefaultApi {
     }
   };
 
+  public customer = {
+    retrieve: () => {
+      return this.customerRetrieve();
+    }
+  };
+
   public dataExportLinks = {
     create: (createDataExportLinkDto: CreateDataExportLinkDto) => {
       return this.createDataExportLink({ createDataExportLinkDto });

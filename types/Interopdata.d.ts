@@ -8,6 +8,9 @@ declare class Interopdata extends DefaultApi {
     customers: {
         create: (createCustomerDto: CreateCustomerDto) => Promise<import("./generated-sources").Customer>;
     };
+    customer: {
+        retrieve: () => Promise<import("./generated-sources").Customer>;
+    };
     dataExportLinks: {
         create: (createDataExportLinkDto: CreateDataExportLinkDto) => Promise<import("./generated-sources").DataExportLink>;
     };

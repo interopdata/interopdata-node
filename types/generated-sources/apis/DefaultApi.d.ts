@@ -71,6 +71,12 @@ export declare class DefaultApi extends runtime.BaseAPI {
     createOAuthToken(requestParameters: CreateOAuthTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AccessToken>;
     /**
      */
+    customerRetrieveRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Customer>>;
+    /**
+     */
+    customerRetrieve(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Customer>;
+    /**
+     */
     customersListRaw(requestParameters: CustomersListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Customer>>>;
     /**
      */

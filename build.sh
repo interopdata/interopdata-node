@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # OPENAPI
-npx openapi-generator-cli -- generate -i https://raw.githubusercontent.com/interopdata/openapi/main/openapi/spec3.json -g typescript-fetch -o src/generated-sources --additional-properties=supportsES6=true,npmVersion=6.9.0,typescriptThreePlus=true
+
+OPENAPI_DEF="https://raw.githubusercontent.com/interopdata/openapi/main/openapi/spec3.json"
+
+npx openapi-generator-cli -- generate -i $OPENAPI_DEF -g typescript-fetch -o src/generated-sources --additional-properties=supportsES6=true,npmVersion=6.9.0,typescriptThreePlus=true
 
 # PATCHES
 patch -p1 -i ./patches/000_localized_strings.patch
