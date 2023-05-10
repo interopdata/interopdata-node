@@ -13,9 +13,9 @@ npx -- tsc -d --emitDeclarationOnly -p tsconfig.json --outDir ./types
 # ESM
 mkdir -p esm
 npx -- tsc -p tsconfig.esm.json
-echo '{\"type\":\"module\"}' > esm/package.json
+echo '{"type":"module"}' > esm/package.json
 
 # CJS
 mkdir -p cjs
 npx -- tsc -p tsconfig.json
-echo '{\"type\":\"commonjs\"}' > cjs/package.json
+echo '{"type":"commonjs"}' > cjs/package.json
