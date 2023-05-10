@@ -1,3 +1,30 @@
+diff --git a/src/generated-sources/models/DataExportDataset.ts b/src/generated-sources/models/DataExportDataset.ts
+index a32f745..adb4a81 100644
+--- a/src/generated-sources/models/DataExportDataset.ts
++++ b/src/generated-sources/models/DataExportDataset.ts
+@@ -30,19 +30,19 @@ export interface DataExportDataset {
+      * @type {string}
+      * @memberof DataExportDataset
+      */
+-    name: string;
++    name: Record<string, string>;
+     /**
+      * 
+      * @type {string}
+      * @memberof DataExportDataset
+      */
+-    description: string;
++    description: Record<string, string>;
+     /**
+      * 
+      * @type {string}
+      * @memberof DataExportDataset
+      */
+-    icon: string;
++    icon: Record<string, string>;
+     /**
+      * 
+      * @type {string}
 diff --git a/src/generated-sources/models/Dataset.ts b/src/generated-sources/models/Dataset.ts
 index d574284..396f747 100644
 --- a/src/generated-sources/models/Dataset.ts
