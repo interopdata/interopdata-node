@@ -12,3 +12,5 @@ export * from './DataExportDataset';
 export * from './DataExportDatasetDownload';
 export * from './DataExportLink';
 export * from './Dataset';
+export * from './Locale';
+export * from './Project';

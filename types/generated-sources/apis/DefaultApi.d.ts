@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AccessToken, CreateAccessTokenDto, CreateCustomerDto, CreateDataExportDto, CreateDataExportLinkDto, Customer, DataExport, DataExportDataset, DataExportDatasetDownload, DataExportLink, Dataset } from '../models';
+import type { AccessToken, CreateAccessTokenDto, CreateCustomerDto, CreateDataExportDto, CreateDataExportLinkDto, Customer, DataExport, DataExportDataset, DataExportDatasetDownload, DataExportLink, Dataset, Locale, Project } from '../models';
 export interface CreateCustomerRequest {
     createCustomerDto: CreateCustomerDto;
 }
@@ -99,4 +99,16 @@ export declare class DefaultApi extends runtime.BaseAPI {
     /**
      */
     datasetsList(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Dataset>>;
+    /**
+     */
+    localesListRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Locale>>>;
+    /**
+     */
+    localesList(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Locale>>;
+    /**
+     */
+    projectRetreiveRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Project>>>;
+    /**
+     */
+    projectRetreive(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Project>>;
 }

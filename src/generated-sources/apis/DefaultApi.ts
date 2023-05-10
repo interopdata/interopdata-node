@@ -26,6 +26,8 @@ import type {
   DataExportDatasetDownload,
   DataExportLink,
   Dataset,
+  Locale,
+  Project,
 } from '../models';
 import {
     AccessTokenFromJSON,
@@ -50,6 +52,10 @@ import {
     DataExportLinkToJSON,
     DatasetFromJSON,
     DatasetToJSON,
+    LocaleFromJSON,
+    LocaleToJSON,
+    ProjectFromJSON,
+    ProjectToJSON,
 } from '../models';
 
 export interface CreateCustomerRequest {
@@ -452,6 +458,70 @@ export class DefaultApi extends runtime.BaseAPI {
      */
     async datasetsList(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Dataset>> {
         const response = await this.datasetsListRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async localesListRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Locale>>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("project-secret", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/locales`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LocaleFromJSON));
+    }
+
+    /**
+     */
+    async localesList(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Locale>> {
+        const response = await this.localesListRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async projectRetreiveRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Project>>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("project-secret", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/project`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ProjectFromJSON));
+    }
+
+    /**
+     */
+    async projectRetreive(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Project>> {
+        const response = await this.projectRetreiveRaw(initOverrides);
         return await response.value();
     }
 
