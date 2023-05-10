@@ -77,6 +77,18 @@ class Interopdata extends DefaultApi {
     },
   };
 
+  public projects = {
+    retrieve: () => {
+      return this.projectRetreive();
+    }
+  };
+
+  public locales = {
+    list: () => {
+      return this.localesList();
+    }
+  };
+
   public webhooks = new Webhooks();
 }
 
