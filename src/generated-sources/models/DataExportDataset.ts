@@ -27,22 +27,22 @@ export interface DataExportDataset {
     id: string;
     /**
      * 
-     * @type {string}
+     * @type {object}
      * @memberof DataExportDataset
      */
-    name: Record<string, string>;
+    name: object;
     /**
      * 
-     * @type {string}
+     * @type {object}
      * @memberof DataExportDataset
      */
-    description: Record<string, string>;
+    description: object;
     /**
      * 
-     * @type {string}
+     * @type {object}
      * @memberof DataExportDataset
      */
-    icon: Record<string, string>;
+    icon: object;
     /**
      * 
      * @type {string}
