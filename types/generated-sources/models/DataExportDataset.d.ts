@@ -23,19 +23,19 @@ export interface DataExportDataset {
     id: string;
     /**
      *
-     * @type {string}
+     * @type {object}
      * @memberof DataExportDataset
      */
     name: Record<string, string>;
     /**
      *
-     * @type {string}
+     * @type {object}
      * @memberof DataExportDataset
      */
     description: Record<string, string>;
     /**
      *
-     * @type {string}
+     * @type {object}
      * @memberof DataExportDataset
      */
     icon: Record<string, string>;
