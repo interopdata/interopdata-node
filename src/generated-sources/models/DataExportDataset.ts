@@ -30,19 +30,19 @@ export interface DataExportDataset {
      * @type {string}
      * @memberof DataExportDataset
      */
-    name: string;
+    name: Record<string, string>;
     /**
      * 
      * @type {string}
      * @memberof DataExportDataset
      */
-    description: string;
+    description: Record<string, string>;
     /**
      * 
      * @type {string}
      * @memberof DataExportDataset
      */
-    icon: string;
+    icon: Record<string, string>;
     /**
      * 
      * @type {string}
