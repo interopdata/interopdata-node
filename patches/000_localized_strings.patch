@@ -1,0 +1,27 @@
+diff --git a/src/generated-sources/models/Dataset.ts b/src/generated-sources/models/Dataset.ts
+index d574284..396f747 100644
+--- a/src/generated-sources/models/Dataset.ts
++++ b/src/generated-sources/models/Dataset.ts
+@@ -36,19 +36,19 @@ export interface Dataset {
+      * @type {object}
+      * @memberof Dataset
+      */
+-    name: object;
++    name: Record<string, string>;
+     /**
+      * 
+      * @type {object}
+      * @memberof Dataset
+      */
+-    description: object;
++    description: Record<string, string>;
+     /**
+      * 
+      * @type {object}
+      * @memberof Dataset
+      */
+-    icon: object;
++    icon: Record<string, string>;
+     /**
+      * 
+      * @type {string}

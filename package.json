@@ -1,14 +1,10 @@
 {
   "name": "interopdata",
-  "version": "0.0.7-alpha",
+  "version": "0.0.8-alpha",
   "description": "Interopdata API wrapper",
   "main": "cjs/main.js",
   "scripts": {
-    "build": "npm run build-openapi && npm run build-types && npm run build-esm && npm run build-cjs",
-    "build-esm": "mkdir -p esm && tsc -p tsconfig.esm.json && echo '{\"type\":\"module\"}' > esm/package.json",
-    "build-cjs": "mkdir -p cjs && tsc -p tsconfig.json && echo '{\"type\":\"commonjs\"}' > cjs/package.json",
-    "build-types": "mkdir -p types && tsc -d --emitDeclarationOnly -p tsconfig.json --outDir ./types",
-    "build-openapi": "openapi-generator-cli generate -i https://raw.githubusercontent.com/interopdata/openapi/main/openapi/spec3.json -g typescript-fetch -o src/generated-sources --additional-properties=supportsES6=true,npmVersion=6.9.0,typescriptThreePlus=true",
+    "build": "./build.sh",
     "clean": "rm -rf ./src/generated-sources ./types ./esm ./cjs",
     "prepack": "npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"

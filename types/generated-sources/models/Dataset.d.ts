@@ -32,19 +32,19 @@ export interface Dataset {
      * @type {object}
      * @memberof Dataset
      */
-    name: object;
+    name: Record<string, string>;
     /**
      *
      * @type {object}
      * @memberof Dataset
      */
-    description: object;
+    description: Record<string, string>;
     /**
      *
      * @type {object}
      * @memberof Dataset
      */
-    icon: object;
+    icon: Record<string, string>;
     /**
      *
      * @type {string}
