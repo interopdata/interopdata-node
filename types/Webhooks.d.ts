@@ -1,8 +1,11 @@
 /// <reference types="node" />
 export interface WebhookEvent {
-    dataset: string;
     customerId: string;
-    uploadURL: string;
+    dataset: {
+        id: string;
+        slug: string;
+    };
+    dataExportId: string;
 }
 declare class Webhooks {
     private static signatureRegexp;

@@ -35,6 +35,9 @@ export interface DataExportDatasetRetrieveRequest {
 export interface DataExportRetrieveRequest {
     id: string;
 }
+export interface SealDataExportDatasetRequest {
+    id: string;
+}
 /**
  *
  */
@@ -117,4 +120,10 @@ export declare class DefaultApi extends runtime.BaseAPI {
     /**
      */
     projectRetreive(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Project>>;
+    /**
+     */
+    sealDataExportDatasetRaw(requestParameters: SealDataExportDatasetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
+    /**
+     */
+    sealDataExportDataset(requestParameters: SealDataExportDatasetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
 }

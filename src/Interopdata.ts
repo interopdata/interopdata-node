@@ -81,6 +81,10 @@ class Interopdata extends DefaultApi {
     download: (dataExportDatasetId: string) => {
       return this.createDataExportDatasetDownload({ id: dataExportDatasetId });
     },
+
+    seal:(dataExportDatasetId: string) => {
+      return this.sealDataExportDataset({ id: dataExportDatasetId });
+    },
   };
 
   public projects = {

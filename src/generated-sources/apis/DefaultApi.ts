@@ -90,6 +90,10 @@ export interface DataExportRetrieveRequest {
     id: string;
 }
 
+export interface SealDataExportDatasetRequest {
+    id: string;
+}
+
 /**
  * 
  */
@@ -555,6 +559,41 @@ export class DefaultApi extends runtime.BaseAPI {
     async projectRetreive(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Project>> {
         const response = await this.projectRetreiveRaw(initOverrides);
         return await response.value();
+    }
+
+    /**
+     */
+    async sealDataExportDatasetRaw(requestParameters: SealDataExportDatasetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling sealDataExportDataset.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("project-secret", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/data-export-datasets/{id}/seal`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async sealDataExportDataset(requestParameters: SealDataExportDatasetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.sealDataExportDatasetRaw(requestParameters, initOverrides);
     }
 
 }

@@ -25,6 +25,7 @@ declare class Interopdata extends DefaultApi {
     dataExportDatasets: {
         retrieve: (dataExportDatasetId: string) => Promise<import("./generated-sources").DataExportDataset>;
         download: (dataExportDatasetId: string) => Promise<import("./generated-sources").DataExportDatasetDownload>;
+        seal: (dataExportDatasetId: string) => Promise<void>;
     };
     projects: {
         retrieve: () => Promise<import("./generated-sources").Project[]>;

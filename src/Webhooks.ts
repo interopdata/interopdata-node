@@ -1,9 +1,12 @@
 import * as crypto from "crypto";
 
 export interface WebhookEvent {
-  dataset: string;
   customerId: string;
-  uploadURL: string;
+  dataset: {
+    id: string;
+    slug: string;
+  };
+  dataExportId: string;
 }
 
 class Webhooks {
